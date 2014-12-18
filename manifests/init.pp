@@ -1,39 +1,14 @@
+# == Class: winsnmp
 #
 # Manages the SNMP service under Windows.
 #
-### Parameters
+# See `README.md` for more details.
 #
-#### communities
-# Array of valid SNMP Community strings. Defaults to none.
-#
-#### contact
-# The value of the 'sysContact' object. Defaults to none.
-#
-#### location
-# The value of the 'sysLocation' object. Defaults to none.
-#
-#### services
-# The value of the 'sysServices' object. Defaults to 76, which is also the
-# default as installed by the Windows feature.
-#
-### Examples
-#
-# ```puppet
-# include winsnmp
-#
-# class { 'winsnmp':
-#   communities = ['public','private'],
-#   contact     = 'admin@example.com',
-#   location    = 'Data Center 1',
-#   services    = 72,
-# }
-# ```
-#
-### Authors
+# === Authors
 #
 # * Steve Maddison <steve.maddison@sanoma.com>
 #
-### Copyright
+# === Copyright
 #
 # Copyright 2014 Sanoma Digital
 #

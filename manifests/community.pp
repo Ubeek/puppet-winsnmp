@@ -1,22 +1,14 @@
+# == Define: winsnmp::community
 #
 # Configure an SNMP community on Windows installations.
 #
-### Parameters
+# See `README.md` for more details.
 #
-#### community
-# The SNMP community string. Defaults to resource title.
-#
-### Examples
-#
-# ```puppet
-# winsnmp::community{ 'public': }
-# ```
-#
-### Authors
+# === Authors
 #
 # * Steve Maddison <steve.maddison@sanoma.com>
 #
-### Copyright
+# === Copyright
 #
 # Copyright 2014 Sanoma Digital
 #
