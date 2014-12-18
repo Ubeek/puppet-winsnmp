@@ -12,11 +12,11 @@
     {
     "operatingsystem":"windows",
     "operatingsystemrelease":[ "2008 R2" ]
-    },
+    }
   ],
   "dependencies": [
     { "name": "puppetlabs/dism" },
     { "name": "puppetlabs/registry" },
-    { "name": "puppetlabs/stdlib" },
+    { "name": "puppetlabs/stdlib" }
   ]
 }
