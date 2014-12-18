@@ -3,13 +3,13 @@ require 'spec_helper'
 describe 'winsnmp::community', :type => 'define' do
   let(:title) { 'winsnmp::community' }
 
-  $community_reg_path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\ValidCommunities'
+  community_reg_path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\ValidCommunities'
 
   context 'With a title "public"' do
     let(:title) { 'public' }
 
     it {
-      should contain_registry_value("#{$community_reg_path}\\public").with({
+      should contain_registry_value("#{community_reg_path}\\public").with({
         :ensure => 'present',
         :type   => 'dword',
         :data   => '4',
@@ -23,7 +23,6 @@ describe 'winsnmp::community', :type => 'define' do
       :community => 'private',
     }}
 
-    it { should contain_registry_value("#{$community_reg_path}\\private") }
+    it { should contain_registry_value("#{community_reg_path}\\private") }
   end
 end
-

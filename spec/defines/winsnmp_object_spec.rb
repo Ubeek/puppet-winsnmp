@@ -3,21 +3,20 @@ require 'spec_helper'
 describe 'winsnmp::object', :type => 'define' do
   let(:title) { 'winsnmp::object' }
 
-  $object_reg_path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent'
-  $example_contact = 'admin@example.com'
+  object_reg_path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent'
 
   context 'With a title and a value.' do
     let(:title) { 'sysContact' }
 
     let(:params) {{
-      :value => $example_contact,
+      :value => 'admin@example.com',
     }}
 
     it {
-      should contain_registry_value("#{$object_reg_path}\\sysContact").with({
+      should contain_registry_value("#{object_reg_path}\\sysContact").with({
         :ensure => 'present',
-        :data => $example_contact,
-        :type => 'string',
+        :data   => 'admin@example.com',
+        :type   => 'string',
       })
     }
   end
@@ -26,10 +25,10 @@ describe 'winsnmp::object', :type => 'define' do
     let(:title) { 'contact' }
     let(:params) {{
       :object => 'sysContact',
-      :value => $example_contact,
+      :value  => 'admin@example.com',
     }}
 
-    it { should contain_registry_value("#{$object_reg_path}\\sysContact") }
+    it { should contain_registry_value("#{object_reg_path}\\sysContact") }
   end
 
   context 'When no value is specified' do
@@ -40,4 +39,3 @@ describe 'winsnmp::object', :type => 'define' do
     }
   end
 end
-
