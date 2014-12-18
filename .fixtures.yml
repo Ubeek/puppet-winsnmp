@@ -1,0 +1,6 @@
+fixtures:
+  symlinks:
+    winsnmp:           "#{source_dir}/../winsnmp"
+    dism:              "#{source_dir}/../../shared/modules/dism"
+    registry:          "#{source_dir}/../../shared/modules/registry"
+    stdlib:            "#{source_dir}/../../shared/modules/stdlib"

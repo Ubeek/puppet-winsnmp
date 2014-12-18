@@ -1,0 +1,11 @@
+name    'sanoma-winsnmp'
+version '0.1.0'
+source 'UNKNOWN'
+author 'sanoma'
+license 'Apache License, Version 2.0'
+summary 'Manages the SNMP service under Windows.'
+description 'UNKNOWN'
+project_page 'UNKNOWN'
+
+dependency 'puppetlabs/dism', '>= 0.1.0'
+dependency 'puppetlabs/registry', '>= 1.0.0'
