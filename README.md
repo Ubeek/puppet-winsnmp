@@ -1,4 +1,4 @@
-#modulename
+#winsnmp
 
 ####Table of Contents
 
