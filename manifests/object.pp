@@ -13,9 +13,9 @@
 # Copyright 2014 Sanoma Digital
 #
 define winsnmp::object (
+  $value,
   $object = $title,
   $type   = 'string',
-  $value,
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent'
 
