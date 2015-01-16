@@ -114,7 +114,7 @@ The value the object should contain (required).
 ##Limitations
 
 This module has been tested on Windows 2008 R2, but may well work on other
-version.
+versions.
 
 ##Development
 

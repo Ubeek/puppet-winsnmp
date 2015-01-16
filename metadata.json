@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "summary": "Manages SNMP configuration under Windows.",
   "source": "https://github.com/sanoma-technology/puppet-winsnmp",
-  "project_page": "https://forge.puppetlabs.com/sanoma/winsnmp",
+  "project_page": "https://github.com/sanoma-technology/puppet-winsnmp",
   "issues_url": "https://github.com/sanoma-technology/puppet-winsnmp/issues",
   "tags": ["windows", "snmp"],
   "operatingsystem_support": [
