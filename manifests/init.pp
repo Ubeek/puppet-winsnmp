@@ -13,12 +13,18 @@
 # Copyright 2014 Sanoma Digital
 #
 class winsnmp (
-  $communities = [],
-  $contact     = '',
-  $location    = '',
-  $services    = 76,
+  $communities    = [],
+  $r_communities  = [],
+  $w_communities  = [],
+  $contact        = '',
+  $location       = '',
+  $services       = 76,
 ) {
   validate_array($communities)
+  validate_array($r_communities)
+  validate_array($w_communities)
+
+  if empty($r_communities) {$r_communities = $communities}
 
   $feature = 'SNMP'
   $service = 'snmp'
@@ -43,7 +49,9 @@ class winsnmp (
   }
 
   # Configure all necessary community strings.
-  winsnmp::community { [$communities]: }
+  #winsnmp::community { [$communities]: }
+  winsnmp::community { [$r_communities]: security => 'READ',}
+  winsnmp::community { [$w_communities]: security => 'WRITE',}
 
   # Set the standard RFC1156 objects.
   if $contact {
