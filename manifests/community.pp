@@ -26,7 +26,7 @@ define winsnmp::community (
       $reg_value = '4'
     }
     'NONE': {
-      $reg_value = '0'
+      $reg_value = '1'
     }
     default: {
       $reg_value = '4'
