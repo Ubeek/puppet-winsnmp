@@ -52,10 +52,11 @@ objects looks something like the below.
 
 ```puppet
 class { 'winsnmp':
-  communities => ['public','private'],
-  contact     => 'admin@example.com',
-  location    => 'Data Center 1',
-  services    => 72,
+  r_communities => ['public','another_public'],
+  w_communities => ['private','secret'],
+  contact       => 'admin@example.com',
+  location      => 'Data Center 1',
+  services      => 72,
 }
 ```
 
@@ -67,8 +68,14 @@ Installs and configures SNMP.
 
 ####Parameters
 
+#####`r_communities`
+Array of valid Read-Only SNMP Community strings. Defaults to contents of 'communities' to preserve backwards compatibility.
+
+#####`w_communities`
+Array of valid Write SNMP Community strings. Defaults to none.
+
 #####`communities`
-Array of valid SNMP Community strings. Defaults to none.
+Array of valid SNMP Community strings. Defaults to none. Deprecated.
 
 #####`contact`
 The value of the RFC1156 `sysContact` object. Defaults to none.
@@ -90,6 +97,9 @@ Manages a single SNMP community string. This is usually done via the main
 
 #####`community`
 The SNMP community string. Defaults to the resource title.
+
+#####`security`
+The permission level on the SNMP community string. Accepts 'READ', 'WRITE' or 'NONE'. Defaults to 'READ'.
 
 
 ###Define `winsnmp::object`
