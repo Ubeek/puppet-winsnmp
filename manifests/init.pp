@@ -24,7 +24,7 @@ class winsnmp (
   validate_array($r_communities)
   validate_array($w_communities)
 
-  if empty($r_communities) {$r_communities = $communities}
+  if empty($r_communities) {if !empty($communities) {$ro_communities = $communities}}
 
   $feature = 'SNMP'
   $service = 'snmp'
@@ -50,7 +50,7 @@ class winsnmp (
 
   # Configure all necessary community strings.
   #winsnmp::community { [$communities]: }
-  winsnmp::community { [$r_communities]: security => 'READ',}
+  winsnmp::community { [$ro_communities]: security => 'READ',}
   winsnmp::community { [$w_communities]: security => 'WRITE',}
 
   # Set the standard RFC1156 objects.
