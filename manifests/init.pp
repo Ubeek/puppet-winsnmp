@@ -19,6 +19,7 @@ class winsnmp (
   $contact        = '',
   $location       = '',
   $services       = 76,
+  $purge          = true,
 ) {
   validate_array($communities)
   validate_array($r_communities)
@@ -51,7 +52,7 @@ class winsnmp (
     'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\PermittedManagers',
     'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent',
     'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\ValidCommunities' ]:
-    purge_values => true,
+    purge_values => $purge,
     require      => Dism[$feature],
     notify       => Service[$service],
   }
