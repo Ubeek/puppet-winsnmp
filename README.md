@@ -69,13 +69,13 @@ Installs and configures SNMP.
 ####Parameters
 
 #####`r_communities`
-Array of valid Read-Only SNMP Community strings. Defaults to contents of 'communities' to preserve backwards compatibility.
+Array of valid Read-Only SNMP Community strings. Defaults to none.
 
 #####`w_communities`
 Array of valid Write SNMP Community strings. Defaults to none.
 
 #####`communities`
-Array of valid SNMP Community strings. Defaults to none. Deprecated.
+Array of valid Read-Only SNMP Community strings. Defaults to none. Deprecated, can not be used in conjunction with 'r_communities'.
 
 #####`contact`
 The value of the RFC1156 `sysContact` object. Defaults to none.
@@ -87,6 +87,8 @@ The value of the RFC1156 `sysLocation` object. Defaults to none.
 The value of the RFC1156 `sysServices` object. Defaults to 76, which is also
 the default as installed by the Windows feature.
 
+#####`purge`
+Boolean to determine if current SNMP values (PermittedManagers, ValidCommunities or RFC1156Agent) should be removed. Defaults to 'true'.
 
 ###Define `winsnmp::community`
 
