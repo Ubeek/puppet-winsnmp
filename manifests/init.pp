@@ -24,7 +24,7 @@ class winsnmp (
   validate_array($r_communities)
   validate_array($w_communities)
 
-  if empty($r_communities) {if !empty($communities) {$ro_communities = $communities}}
+  if empty($r_communities) {if !empty($communities) {$ro_communities = $communities}} else {$ro_communities = $r_communities}
 
   $feature = 'SNMP'
   $service = 'snmp'

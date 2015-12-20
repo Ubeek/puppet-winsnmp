@@ -15,13 +15,31 @@ describe 'winsnmp', :type => 'class' do
     }
   end
 
-  context 'With community strings "public" and "private"' do
+  context 'With community strings "public" and "another_public"' do
     let(:params) {{
-      :communities => ['public','private']
+      :communities => ['public','another_public']
     }}
 
     it { should contain_winsnmp__community('public') }
+    it { should contain_winsnmp__community('another_public') }
+  end
+
+  context 'With Read-Only community strings "readonly" and "ro_community"' do
+    let(:params) {{
+      :r_communities => ['readonly','ro_community']
+    }}
+
+    it { should contain_winsnmp__community('readonly') }
+    it { should contain_winsnmp__community('ro_community') }
+  end
+
+  context 'With Write access community strings "private" and "write"' do
+    let(:params) {{
+      :w_communities => ['private','write']
+    }}
+
     it { should contain_winsnmp__community('private') }
+    it { should contain_winsnmp__community('write') }
   end
 
   context 'With custom contact, location and services' do
