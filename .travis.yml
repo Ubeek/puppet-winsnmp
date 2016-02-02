@@ -1,7 +1,7 @@
 rvm: 1.8.7
 notifications:
   email:
-    - travis@ubeek.net
+    - devops.nl@sanoma.com
 env:
   - PUPPET_VERSION=2.7.26
   - PUPPET_VERSION=3.7.3
