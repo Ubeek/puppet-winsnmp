@@ -20,8 +20,16 @@ describe 'winsnmp', :type => 'class' do
       :communities => ['public','another_public']
     }}
 
-    it { should contain_winsnmp__community('public') }
-    it { should contain_winsnmp__community('another_public') }
+    it { 
+      should contain_winsnmp__community('public').with( {
+        :security => 'READ',
+      } ) 
+    }
+    it { 
+      should contain_winsnmp__community('another_public').with( {
+        :security => 'READ',      
+        }) 
+    }
   end
 
   context 'With Read-Only community strings "readonly" and "ro_community"' do
@@ -29,8 +37,16 @@ describe 'winsnmp', :type => 'class' do
       :r_communities => ['readonly','ro_community']
     }}
 
-    it { should contain_winsnmp__community('readonly') }
-    it { should contain_winsnmp__community('ro_community') }
+    it { 
+      should contain_winsnmp__community('readonly').with( {
+        :security => 'READ',
+      } ) 
+    }
+    it { 
+      should contain_winsnmp__community('ro_community').with( {
+        :security => 'READ',      
+        }) 
+    }
   end
 
   context 'With Write access community strings "private" and "write"' do
@@ -38,8 +54,16 @@ describe 'winsnmp', :type => 'class' do
       :w_communities => ['private','write']
     }}
 
-    it { should contain_winsnmp__community('private') }
-    it { should contain_winsnmp__community('write') }
+    it { 
+      should contain_winsnmp__community('private').with( {
+        :security => 'WRITE',
+      } ) 
+    }
+    it { 
+      should contain_winsnmp__community('write').with( {
+        :security => 'WRITE',      
+        }) 
+    }
   end
 
   context 'With custom contact, location and services' do
