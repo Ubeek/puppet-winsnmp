@@ -18,14 +18,17 @@
 #                  '3' => 'another_one' }
 
 define winsnmp::trap_destination (
-  $key,
+  $key = $title,
   $hash,
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
+  $dest = $hash[$key]
 
-$dest = $hash[$title]
-
-notify {"Title is $title\nHash is $dest" :}
-
+  registry_value { "${path}\\${key}" :
+    ensure  => present,
+    type    => 'string',
+    data    => $dest,
+    notify  => Service[$winsnmp::service],
+  }
 
 }

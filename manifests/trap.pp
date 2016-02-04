@@ -22,21 +22,18 @@ define winsnmp::trap (
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
 
-  registry_value { "${path}":
+  registry_key { "${path}":
     ensure => present,
   }
 
-  registry_value { "${path}\\${title}":
+  registry_key { "${path}\\${title}":
     ensure => present,
   }
 
   if ! empty($trap_destinations) {
     #Create trap destination keys
-
     $keys = keys($trap_destinations)
-    $values = values($trap_destinations)
     winsnmp::trap_destination { $keys:
-      key   => $keys,
       hash  => $trap_destinations,
     }
   }
