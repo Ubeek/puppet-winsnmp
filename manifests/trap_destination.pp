@@ -23,6 +23,9 @@ define winsnmp::trap_destination (
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
 
-notify {"Title is ${title}\nKey is ${key}\nHash is ${hash[$key]}" :}
+$dest = $hash[$title]
+
+notify {"Title is $title\nHash is $dest" :}
+
 
 }

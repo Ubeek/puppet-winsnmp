@@ -18,7 +18,7 @@
 #                  '3' => 'another_one' }
 
 define winsnmp::trap (
-  $trap_destinations = [],
+  $trap_destinations = {},
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
 
@@ -35,7 +35,7 @@ define winsnmp::trap (
 
     $keys = keys($trap_destinations)
     $values = values($trap_destinations)
-    winsnmp::trap_destination { "${title}\\${keys}":
+    winsnmp::trap_destination { $keys:
       key   => $keys,
       hash  => $trap_destinations,
     }
