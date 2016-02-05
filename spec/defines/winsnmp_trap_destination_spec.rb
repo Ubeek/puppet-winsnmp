@@ -10,7 +10,7 @@ describe 'winsnmp::trap_destination', :type => 'define' do
     let(:title) { '1' }
     let(:params) {{
       :trap => 'trapName01'
-      :hash => {'1' => 'trapdest.internal'},
+      :dest_hash => {'1' => 'trapdest.internal'},
     }}
     it {
       should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\#{trap}\\1").with({

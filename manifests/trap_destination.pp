@@ -17,10 +17,10 @@
 define winsnmp::trap_destination (
   $key   = $title,
   $trap,
-  $hash,
+  $dest_hash,
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
-  $dest = $hash[$key]
+  $dest = $dest_hash[$key]
 
   registry_value { "${path}\\${trap}\\${key}" :
     ensure  => present,
