@@ -29,7 +29,7 @@ define winsnmp::trap_destination (
     ensure  => present,
     type    => 'string',
     data    => $dest,
-    notify  => Service[$winsnmp::service],
+    #notify  => Service[$winsnmp::service],
   }
 
 }
