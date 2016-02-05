@@ -30,10 +30,10 @@ describe 'winsnmp::trap', :type => 'define' do
       should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration\\trapName01").with({
         :ensure => 'present',
       })
-      should contain_snmp_trap_destination("1").with({
-        :hash => {'1' => 'trapdest.internal'},
-        :trap => 'trapName02',
-        :key  => '1',
+      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\1").with({
+        :ensure => 'present',
+        :type   => 'string',
+        :data   => 'trapdest.internal',
         })
   end
 end
