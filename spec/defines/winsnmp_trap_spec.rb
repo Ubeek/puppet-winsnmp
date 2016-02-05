@@ -9,15 +9,11 @@ describe 'winsnmp::trap', :type => 'define' do
     let(:title) { 'trapName01' }
 
     it {
-      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\(Default)").with({
+      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\").with({
         :ensure => 'present',
-        :type   => 'string',
-        :data   => '',
       })
-      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\(Default)").with({
+      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\").with({
         :ensure => 'present',
-        :type   => 'string',
-        :data   => '',
       })
     }
   end
