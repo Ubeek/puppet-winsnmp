@@ -13,13 +13,14 @@
 # Copyright 2014 Sanoma Digital
 #
 class winsnmp (
-  $communities    = [],
-  $r_communities  = [],
-  $w_communities  = [],
-  $contact        = '',
-  $location       = '',
-  $services       = 76,
-  $purge          = true,
+  $communities     = [],
+  $r_communities   = [],
+  $w_communities   = [],
+  $contact         = '',
+  $location        = '',
+  $services        = 76,
+  $purge           = true,
+  $send_auth_traps = true,
 ) {
   validate_array($communities)
   validate_array($r_communities)
@@ -79,4 +80,19 @@ class winsnmp (
       value => $services,
     }
   }
+
+  if $send_auth_traps == true {
+    registry_value { 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\EnableAuthenticationTraps' :
+      ensure => present,
+      type   => 'dword',
+      data   => '1',
+    }
+  } else {
+    registry_value { 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\EnableAuthenticationTraps' :
+      ensure => present,
+      type   => 'dword',
+      data   => '0',
+    }
+  }
+
 }
