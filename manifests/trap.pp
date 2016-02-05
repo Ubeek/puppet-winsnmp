@@ -33,8 +33,8 @@ define winsnmp::trap (
     #Create trap destination keys
     $keys = keys($trap_destinations)
     winsnmp::trap_destination { $keys:
-      dest_hash  => $trap_destinations,
-      trap       => $title,
+      dest_hash => $trap_destinations,
+      trap      => $title,
     }
   }
 
