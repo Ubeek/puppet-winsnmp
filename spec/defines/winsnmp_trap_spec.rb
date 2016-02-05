@@ -11,7 +11,6 @@ describe 'winsnmp::trap', :type => 'define' do
       should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\").with({
         :ensure => 'present',
       })
-    }
   end
 
   # context 'With title "trapName02" and a trap destination of "trapdest.internal"' do
