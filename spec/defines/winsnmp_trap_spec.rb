@@ -9,11 +9,15 @@ describe 'winsnmp::trap', :type => 'define' do
     let(:title) { 'trapName01' }
 
     it {
-      should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration").with({
+      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\(Default)").with({
         :ensure => 'present',
+        :type   => 'string',
+        :data   => '',
       })
-      should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration\\trapName01").with({
+      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\(Default)").with({
         :ensure => 'present',
+        :type   => 'string',
+        :data   => '',
       })
     }
   end
@@ -24,16 +28,21 @@ describe 'winsnmp::trap', :type => 'define' do
       :trap_destinations => {'1' => 'trapdest.internal'},
     }}
 
-      should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration").with({
-        :ensure => 'present',
-      })
-      should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration\\trapName01").with({
-        :ensure => 'present',
-      })
-      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\1").with({
-        :ensure => 'present',
-        :type   => 'string',
-        :data   => 'trapdest.internal',
+      should contain_winsnmp__trap_destination("1").with({
+        :trap       => 'trapName02',
+        :dest_hash  => {'1' => 'trapdest.internal'},
         })
+
+      # should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration").with({
+      #   :ensure => 'present',
+      # })
+      # should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration\\trapName01").with({
+      #   :ensure => 'present',
+      # })
+      # should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\trapName01\\1").with({
+      #   :ensure => 'present',
+      #   :type   => 'string',
+      #   :data   => 'trapdest.internal',
+      # })
   end
 end
