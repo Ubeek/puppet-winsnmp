@@ -9,7 +9,7 @@ describe 'winsnmp::trap_destination', :type => 'define' do
   context "With title '1', trap 'trapName01' and a hash of {'1' => '#{trap_dest}'}" do
     let(:title) { '1' }
     let(:params) {{
-      :trap => 'trapName01'
+      :trap => 'trapName01',
       :dest_hash => {'1' => 'trapdest.internal'},
     }}
     it {
