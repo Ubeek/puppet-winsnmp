@@ -22,16 +22,16 @@ describe 'winsnmp::trap', :type => 'define' do
     }
   end
 
-  context 'With title "trapName02" and a trap destination of "trapdest.internal"' do
-    let(:title) { 'trapName02' }
-    let(:params) {{
-      :trap_destinations => {'1' => 'trapdest.internal'},
-    }}
+  # context 'With title "trapName02" and a trap destination of "trapdest.internal"' do
+  #   let(:title) { 'trapName02' }
+  #   let(:params) {{
+  #     :trap_destinations => {'1' => 'trapdest.internal'},
+  #   }}
 
-      should contain_winsnmp__trap_destination("1").with({
-        :trap       => 'trapName02',
-        :dest_hash  => {'1' => 'trapdest.internal'},
-        })
+  #     should contain_winsnmp__trap_destination("1").with({
+  #       :trap       => 'trapName02',
+  #       :dest_hash  => {'1' => 'trapdest.internal'},
+  #       })
 
       # should contain_registry_key("#{snmp_reg_path}\\TrapConfiguration").with({
       #   :ensure => 'present',
@@ -44,5 +44,5 @@ describe 'winsnmp::trap', :type => 'define' do
       #   :type   => 'string',
       #   :data   => 'trapdest.internal',
       # })
-  end
+  # end
 end
