@@ -23,7 +23,7 @@ define winsnmp::trap (
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
 
   #Create above reg key only if it doesn't exist; Allows for multiple traps to be defined without running into multiple declarations of the same resource
-  ensure_resource('registry_key', "${path}", {'ensure' => 'present' })
+  ensure_resource('registry_key', $path, {'ensure' => 'present' })
 
   registry_key { "${path}\\${title}":
     ensure => present,
@@ -34,7 +34,7 @@ define winsnmp::trap (
     $keys = keys($trap_destinations)
     winsnmp::trap_destination { $keys:
       dest_hash  => $trap_destinations,
-      trap  => $title,
+      trap       => $title,
     }
   }
 
