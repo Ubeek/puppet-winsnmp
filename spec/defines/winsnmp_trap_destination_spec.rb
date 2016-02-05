@@ -5,6 +5,7 @@ describe 'winsnmp::trap_destination', :type => 'define' do
 
   snmp_reg_path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters'
   trap_dest = 'trapdest.internal'
+  completed_regpath = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration\trapName01\1'
 
   context "With title '1', trap 'trapName01' and a hash of {'1' => '#{trap_dest}'}" do
     let(:title) { '1' }
@@ -13,7 +14,7 @@ describe 'winsnmp::trap_destination', :type => 'define' do
       :dest_hash => {'1' => "#{trap_dest}"},
     }}
     it {
-      should contain_registry_value("#{snmp_reg_path}\\TrapConfiguration\\#{trap}\\1").with({
+      should contain_registry_value("#{completed_regpath}").with({
         :ensure => 'present',
         :type   => 'string',
         :data   => "#{trap_dest}",
