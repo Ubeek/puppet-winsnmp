@@ -13,7 +13,7 @@
 # Copyright 2016 Sanoma Digital
 #
 #
-#$sample_dests = { '1' => 'ptlxcs',
+#$sample_dests = { '1' => 'sample1',
 #                  '2' => 'cacti_ro',
 #                  '3' => 'another_one' }
 
@@ -22,9 +22,8 @@ define winsnmp::trap (
 ) {
   $path = 'HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\TrapConfiguration'
 
-  registry_key { "${path}":
-    ensure => present,
-  }
+  #Create above reg key only if it doesn't exist; Allows for multiple traps to be defined without running into multiple declarations of the same resource
+  ensure_resource('registry_key', "${path}", {'ensure' => 'present' })
 
   registry_key { "${path}\\${title}":
     ensure => present,
