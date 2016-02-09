@@ -6,10 +6,6 @@ define winsnmp::permitted_managers (
   #Create above reg key only if it doesn't exist; Allows for multiple managers to be defined without running into multiple declarations of the same resource
   ensure_resource('registry_key', $path, {'ensure' => 'present' })
 
-  registry_key { "${path}\\${title}":
-    ensure => present,
-  }
-
   if ! empty($managers) {
     $keys = keys($managers)
     winsnmp::managers { $keys:
