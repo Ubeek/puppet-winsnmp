@@ -9,7 +9,7 @@ define winsnmp::managers (
     ensure => present,
     type   => 'string',
     data   => $manager,
-    notify  => Service[$winsnmp::service],
+    notify => Service[$winsnmp::service],
   }
 
 }
